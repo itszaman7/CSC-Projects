@@ -2,24 +2,24 @@
 from datetime import date, timedelta
 
 
-
 #Data Structures
 trip_info = ["Bus No.12","Dhaka to chittagong", "8:00 pm","Kallanpur Bus Terminal Dhaka", "Chittagong Port Bus Terminal", date.today() + timedelta(days=3)]
+
 bus_info =  [
     #Seat No. Ticket No. Seat Avability Price
-    ["A1","D1B1T01",False,2000], ["A2","D1B1T02",False,2000], ["A3","D1B1T03",False,2000], ["A4","D1B1T04",False,2000],
-    ["B1","D1B1T05",False,2000], ["B2","D1B1T06",False,2000], ["B3","D1B1T07",True,2000], ["B4","D1B1T08",True,2000],
-    ["C1","D1B1T09",True,2000], ["C2","D1B1T10",True,2000], ["C3","D1B1T11",True,2000], ["C4","D1B1T12",True,2000],
-    ["D1","D1B1T13",False,2000], ["D2","D1B1T14",False,2000], ["D3","D1B1T15",False,2000], ["D4","D1B1T16",False,2000]
+    ["A1","D1B12T01",False,2000], ["A2","D1B12T02",False,2000], ["A3","D1B12T03",False,2000], ["A4","D1B12T04",False,2000],
+    ["B1","D1B12T05",False,2000], ["B2","D1B12T06",False,2000], ["B3","D1B12T07",True,2000], ["B4","D1B12T08",True,2000],
+    ["C1","D1B12T09",True,2000], ["C2","D1B12T10",True,2000], ["C3","D1B12T11",True,2000], ["C4","D1B12T12",True,2000],
+    ["D1","D1B12T13",False,2000], ["D2","D1B12T14",False,2000], ["D3","D1B12T15",False,2000], ["D4","D1B12T16",False,2000]
             ]
 
 passenger_info = [
     #First Name,Last Name, Age, Gender, Seat Number, Amount Paid ,Buying Date, Expiration Date
-    ["Mubashir","Tawhid",19,"Male","A1","D1B1T01",2000,"13th-Aug-22","17th-Aug-22"], ["Ozaire","Wasit",20,"Male","A2","D1B1T02",2000,"13th-Aug-22","17th-Aug-22"],
-    ["Shams","Habib",20,"Male","A3","D1B1T03",2000,"13th-Aug-22","17th-Aug-22"],["Adrika","Wasita",21,"Female","A4","D1B1T04",2000,"13th-Aug-22","17th-Aug-22"],
-    ["Noshin","Hossain",21,"Female","B1","D1B1T05",2000,"13th-Aug-22","17th-Aug-22"],["Tasnuva","Tahsin",21,"Female","B2","D1B1T06",2000,"13th-Aug-22","17th-Aug-22"],
-    ["Ahnaf","Ahmed",23,"Male","D1","D1B1T13",2000,"13th-Aug-22","17th-Aug-22"],["Wahed","Shezan",21,"Male","D2","D1B1T14",2000,"13th-Aug-22","17th-Aug-22"],
-    ["Aqib","Hossain",23,"Male","D3","D1B1T15",2000,"13th-Aug-22","17th-Aug-22"],["Zaman","Mantaka",19,"Male","B1","D1B1T16",2000,"13th-Aug-22","17th-Aug-22"]
+    ["Mubashir","Tawhid",19,"Male","A1","D1B12T01",2000,"13th-Aug-22","17th-Aug-22"], ["Ozaire","Wasit",20,"Male","A2","D1B12T02",2000,"13th-Aug-22","17th-Aug-22"],
+    ["Shams","Habib",20,"Male","A3","D1B12T03",2000,"13th-Aug-22","17th-Aug-22"],["Adrika","Wasita",21,"Female","A4","D1B12T04",2000,"13th-Aug-22","17th-Aug-22"],
+    ["Noshin","Hossain",21,"Female","B12","D1B12T05",2000,"13th-Aug-22","17th-Aug-22"],["Tasnuva","Tahsin",21,"Female","B2","D1B12T06",2000,"13th-Aug-22","17th-Aug-22"],
+    ["Ahnaf","Ahmed",23,"Male","D1","D1B12T13",2000,"13th-Aug-22","17th-Aug-22"],["Wahed","Shezan",21,"Male","D2","D1B12T14",2000,"13th-Aug-22","17th-Aug-22"],
+    ["Aqib","Hossain",23,"Male","D3","D1B12T15",2000,"13th-Aug-22","17th-Aug-22"],["Zaman","Mantaka",19,"Male","D4","D1B12T16",2000,"13th-Aug-22","17th-Aug-22"]
                  ] 
 
 
@@ -56,16 +56,15 @@ def ShowAvailbeSeats(): #Print All the  seats which are available
             availableSeatList.append(ticketList)
     print("Seat No. Ticket No.")
     for i in range(len(availableSeatList)):
-        ticketString = "{0:8} {1:9}" .format(availableSeatList[i][0],availableSeatList[i][1],)
-        print(ticketString)
+        print("{0:8} {1:9}" .format(availableSeatList[i][0],availableSeatList[i][1]))
 
 def SeatStatus(seatNum):
     for i in range(len(bus_info)):
         if(seatNum == bus_info[i][0]):
             if(bus_info[i][2] == False):
-                return print("Seat is available for booking")
+                return print("%s is already booked.\n" %seatNum)
             else:
-                return print("Seat is already booked.")
+                return print("%s is available for booking.\n" %seatNum) 
         elif(i == len(bus_info) - 1 and seatNum != bus_info[i][0]):
             return print("Invalid Seat No. was entered.")
 
@@ -99,7 +98,12 @@ def FindTicket(seatNum):
 def ShowAllSeats():
     print("\nSeat No. | Ticket No. | Avaibility | Amount")
     for i in range(len(bus_info)):
-        print("{0:9} {1:11} {2:11} {3:6}" .format(bus_info[i][0],bus_info[i][1],bus_info[i][2],bus_info[i][3]))
+        x = bus_info[i][2]
+        if(x == True):
+            string = "Yes"
+        else:
+            string = "No"
+        print("{0:9} {1:11}    {2:11} {3:6}" .format(bus_info[i][0],bus_info[i][1],string,bus_info[i][3]))
 
 def BookTicket(passengerCount): #Allow the user to book ticket
     if(SoldOut()):
@@ -109,7 +113,6 @@ def BookTicket(passengerCount): #Allow the user to book ticket
         canBook =  False
         cancelBook = "" #Initial Variables
         toAdd = []
-        tik = ""
         if(i < 1):
             allPassengers = [] #To make sure we do not empty the list after first run of loop
 
