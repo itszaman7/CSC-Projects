@@ -16,10 +16,11 @@ passenger_info = [
     #First Name,Last Name, Age, Gender, Seat Number, Amount Paid ,Buying Date, Expiration Date
     ["Mubashir","Tawhid",19,"Male","A1","D1B12T01",2000,"13th-Aug-22","17th-Aug-22"], ["Ozaire","Wasit",20,"Male","A2","D1B12T02",2000,"13th-Aug-22","17th-Aug-22"],
     ["Shams","Habib",20,"Male","A3","D1B12T03",2000,"13th-Aug-22","17th-Aug-22"],["Adrika","Wasita",21,"Female","A4","D1B12T04",2000,"13th-Aug-22","17th-Aug-22"],
-    ["Noshin","Hossain",21,"Female","B12","D1B12T05",2000,"13th-Aug-22","17th-Aug-22"],["Tasnuva","Tahsin",21,"Female","B2","D1B12T06",2000,"13th-Aug-22","17th-Aug-22"],
+    ["Noshin","Hossain",21,"Female","B1","D1B12T05",2000,"13th-Aug-22","17th-Aug-22"],["Tasnuva","Tahsin",21,"Female","B2","D1B12T06",2000,"13th-Aug-22","17th-Aug-22"],
     ["Ahnaf","Ahmed",23,"Male","D1","D1B12T13",2000,"13th-Aug-22","17th-Aug-22"],["Wahed","Shezan",21,"Male","D2","D1B12T14",2000,"13th-Aug-22","17th-Aug-22"],
     ["Aqib","Hossain",23,"Male","D3","D1B12T15",2000,"13th-Aug-22","17th-Aug-22"],["Zaman","Mantaka",19,"Male","D4","D1B12T16",2000,"13th-Aug-22","17th-Aug-22"]
                  ] 
+
 
 
 
