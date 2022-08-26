@@ -4,7 +4,6 @@ from datetime import date, timedelta
 
 #Data Structures
 trip_info = ["Bus No.12","Dhaka to chittagong", "8:00 pm","Kallanpur Bus Terminal Dhaka", "Chittagong Port Bus Terminal", date.today() + timedelta(days=3)]
-
 bus_info =  [
     #Seat No. Ticket No. Seat Avability Price
     ["A1","D1B12T01",False,2000], ["A2","D1B12T02",False,2000], ["A3","D1B12T03",False,2000], ["A4","D1B12T04",False,2000],
@@ -55,9 +54,10 @@ def ShowAvailbeSeats(): #Print All the  seats which are available
             ticketList = [bus_info[i][0],bus_info[i][1]]
             availableSeatList.append(ticketList)
     print("Seat No. Ticket No.")
-    for i in range(len(availableSeatList)):
-        print("{0:8} {1:9}" .format(availableSeatList[i][0],availableSeatList[i][1]))
+    for j in range(len(availableSeatList)):
+        print("{0:8} {1:9}" .format(availableSeatList[j][0],availableSeatList[j][1]))
 
+#Show Seat Status of  chosen seat
 def SeatStatus(seatNum):
     for i in range(len(bus_info)):
         if(seatNum == bus_info[i][0]):
@@ -88,14 +88,14 @@ def SoldOut(): #Check if all the tickets are sold out
             isSoldOut = False
     return isSoldOut
 
-def FindTicket(seatNum):
+def FindTicket(seatNum): #Find Specific Ticket
     for i in range(len(bus_info)):
         if(bus_info[i][0] == seatNum.upper()):
             ticket = bus_info[i][1]
     print(ticket)
     return ticket
     
-def ShowAllSeats():
+def ShowAllSeats(): #Show Data of all seats
     print("\nSeat No. | Ticket No. | Avaibility | Amount")
     for i in range(len(bus_info)):
         x = bus_info[i][2]
@@ -161,7 +161,7 @@ def BookTicket(passengerCount): #Allow the user to book ticket
 
 def CancelReservation(seatNum): #Function to cancel Reservation
     for i in range(len(passenger_info)):
-        if(passenger_info[i][4] == seatNum):  #Find which passenger wants to cancel
+        if(passenger_info[i][4] == seatNum.upper()):  #Find which passenger wants to cancel
             confrim = input("Are you sure you want to cancel your reservation?\n*WE HAVE NO REFUND POLICY \nEnter Y to continue, to cancel press any key: ")
             if(confrim.upper() == "Y"): #Confermation Input
                 for seat in range(len(bus_info)):
@@ -176,7 +176,7 @@ def CancelReservation(seatNum): #Function to cancel Reservation
             print("Seat enterted is invalid")
                         
 def UpdateSeats(oldSeat,newSeat):
-    for i in range(len(passenger_info)):
+    for i in range(len(passenger_info)):  #Update Seat info
         if(passenger_info[i][4] == oldSeat):
             passenger_info[i][4] = newSeat
             passenger_info[i][6] += 500
@@ -208,7 +208,7 @@ def ChangeSeat(seatNum):
                 bus_info[i][2] = True           #Output chages4
                 print("Congratulations your seat {} has been changed to {} and you have been charged extra 500Bdt".format(seatNum,chooseSeat)) 
 
-
+#Database Menu
 def ShowDatabase():
     print("\n1.Trip Info")
     print("2.Bus Details")
